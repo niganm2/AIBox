@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: ai-box
+  profiles:
+    active: dev
+  ai:
+    dashscope:
+      chat:
+        options:
+          model: qwen-turbo
+          temperature: 0.8
+      embedding:
+        options:
+          model: text-embedding-v3
+          dimensions: 1024 #默认就是1024
+    # JDBC ChatMemory：表已手动创建，关闭框架自动建表
+    chat:
+      memory:
+        repository:
+          jdbc:
+            initialize-schema: never
+logging:
+  level:
+    org.springframework.ai: debug
+    com.yule.ai: debug
